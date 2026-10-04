@@ -1,0 +1,11 @@
+# Lightweight dependencies for the Streamlit Community Cloud demo.
+# Streamlit Cloud reads this file because it sits next to the app (ui/streamlit_app.py).
+# sentence-transformers / PyTorch are left out to fit the free tier; the app then
+# uses its built-in offline embedder automatically.
+streamlit>=1.40
+chromadb>=0.5
+scikit-learn>=1.3
+numpy>=1.24
+pydantic>=2.6
+httpx>=0.27
+anthropic>=0.40
