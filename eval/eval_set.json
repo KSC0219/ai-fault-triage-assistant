@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "query": "Our Hyderabad branch has lost WAN connectivity and the uplink port shows no carrier",
+    "expected_category": "fiber_link_down"
+  },
+  {
+    "id": 2,
+    "query": "the 10G uplink is completely down and the far end router can't be reached",
+    "expected_category": "fiber_link_down"
+  },
+  {
+    "id": 3,
+    "query": "LOS alarm on the WAN interface, the site is offline",
+    "expected_category": "fiber_link_down"
+  },
+  {
+    "id": 4,
+    "query": "after construction work outside, the fiber link to the branch dropped",
+    "expected_category": "fiber_link_down"
+  },
+  {
+    "id": 5,
+    "query": "receive light level on the SFP is very weak around -25 dBm",
+    "expected_category": "low_optical_power"
+  },
+  {
+    "id": 6,
+    "query": "transceiver DOM readings show low rx power and a few CRC errors",
+    "expected_category": "low_optical_power"
+  },
+  {
+    "id": 7,
+    "query": "optical signal degraded on the fiber port, warning not yet down",
+    "expected_category": "low_optical_power"
+  },
+  {
+    "id": 8,
+    "query": "router CPU stuck near 100 percent and ssh sessions are lagging",
+    "expected_category": "high_cpu"
+  },
+  {
+    "id": 9,
+    "query": "control plane is overloaded and the monitoring tool can't poll the box",
+    "expected_category": "high_cpu"
+  },
+  {
+    "id": 10,
+    "query": "processor usage is very high and OSPF hellos are being missed",
+    "expected_category": "high_cpu"
+  },
+  {
+    "id": 11,
+    "query": "our internet peering session keeps going up and down",
+    "expected_category": "bgp_flap"
+  },
+  {
+    "id": 12,
+    "query": "eBGP neighbor to the ISP drops with hold time expired",
+    "expected_category": "bgp_flap"
+  },
+  {
+    "id": 13,
+    "query": "BGP stuck between Idle and Active with the upstream provider",
+    "expected_category": "bgp_flap"
+  },
+  {
+    "id": 14,
+    "query": "routes from the ISP keep getting withdrawn and re-advertised",
+    "expected_category": "bgp_flap"
+  },
+  {
+    "id": 15,
+    "query": "users on 3rd floor complain network is slow and the port shows CRC errors",
+    "expected_category": "packet_loss_crc"
+  },
+  {
+    "id": 16,
+    "query": "interface input errors keep increasing and pings drop about 5%",
+    "expected_category": "packet_loss_crc"
+  },
+  {
+    "id": 17,
+    "query": "server behind access port has intermittent packet drops",
+    "expected_category": "packet_loss_crc"
+  },
+  {
+    "id": 18,
+    "query": "entire floor network went down and MAC addresses are flapping between ports",
+    "expected_category": "stp_loop"
+  },
+  {
+    "id": 19,
+    "query": "broadcast flood on all switch ports and switch CPU maxed out",
+    "expected_category": "stp_loop"
+  },
+  {
+    "id": 20,
+    "query": "someone may have plugged a cable between two wall jacks, everything is down",
+    "expected_category": "stp_loop"
+  },
+  {
+    "id": 21,
+    "query": "spanning tree topology changes flooding syslog and network unusable",
+    "expected_category": "stp_loop"
+  },
+  {
+    "id": 22,
+    "query": "a desk port is err-disabled and the user has no network",
+    "expected_category": "port_err_disabled"
+  },
+  {
+    "id": 23,
+    "query": "port security violation shut down the access port",
+    "expected_category": "port_err_disabled"
+  },
+  {
+    "id": 24,
+    "query": "new laptop plugged in and the switch port went into error disabled",
+    "expected_category": "port_err_disabled"
+  },
+  {
+    "id": 25,
+    "query": "people can ping 8.8.8.8 but websites don't open by name",
+    "expected_category": "dns_failure"
+  },
+  {
+    "id": 26,
+    "query": "name resolution timing out for intranet sites",
+    "expected_category": "dns_failure"
+  },
+  {
+    "id": 27,
+    "query": "apps throwing could not resolve host errors",
+    "expected_category": "dns_failure"
+  },
+  {
+    "id": 28,
+    "query": "laptops are getting 169.254 self assigned addresses",
+    "expected_category": "dhcp_exhaustion"
+  },
+  {
+    "id": 29,
+    "query": "guest wifi pool is full and no more leases are available",
+    "expected_category": "dhcp_exhaustion"
+  },
+  {
+    "id": 30,
+    "query": "new devices don't receive an IP address from the server",
+    "expected_category": "dhcp_exhaustion"
+  },
+  {
+    "id": 31,
+    "query": "edge firewall dropping new connections because the session table is full",
+    "expected_category": "firewall_session_limit"
+  },
+  {
+    "id": 32,
+    "query": "internet is intermittent and the firewall reports max concurrent sessions reached",
+    "expected_category": "firewall_session_limit"
+  },
+  {
+    "id": 33,
+    "query": "one host seems to be opening thousands of connections through the firewall",
+    "expected_category": "firewall_session_limit"
+  },
+  {
+    "id": 34,
+    "query": "switch lost one of its redundant power supplies",
+    "expected_category": "power_supply_failure"
+  },
+  {
+    "id": 35,
+    "query": "PSU 2 failed alarm on the core switch",
+    "expected_category": "power_supply_failure"
+  },
+  {
+    "id": 36,
+    "query": "the device rebooted on its own and logs mention a power supply fault",
+    "expected_category": "power_supply_failure"
+  },
+  {
+    "id": 37,
+    "query": "chassis temperature alarm, inlet air very hot",
+    "expected_category": "high_temperature"
+  },
+  {
+    "id": 38,
+    "query": "fan tray failed and the router is overheating",
+    "expected_category": "high_temperature"
+  },
+  {
+    "id": 39,
+    "query": "server room AC is down and devices are raising thermal alarms",
+    "expected_category": "high_temperature"
+  },
+  {
+    "id": 40,
+    "query": "free memory on the firewall drops a little every day and is almost exhausted",
+    "expected_category": "memory_leak"
+  },
+  {
+    "id": 41,
+    "query": "device crashed out of memory after running for months",
+    "expected_category": "memory_leak"
+  },
+  {
+    "id": 42,
+    "query": "a process keeps using more RAM over time until the box becomes unstable",
+    "expected_category": "memory_leak"
+  },
+  {
+    "id": 43,
+    "query": "employees can't log in to the corporate wifi, 802.1X keeps failing",
+    "expected_category": "wifi_auth_failure"
+  },
+  {
+    "id": 44,
+    "query": "RADIUS authentication timing out for wireless users",
+    "expected_category": "wifi_auth_failure"
+  },
+  {
+    "id": 45,
+    "query": "guest wifi works but staff get credential rejected on the secure SSID",
+    "expected_category": "wifi_auth_failure"
+  },
+  {
+    "id": 46,
+    "query": "IPsec tunnel to the branch office is down",
+    "expected_category": "vpn_tunnel_down"
+  },
+  {
+    "id": 47,
+    "query": "site-to-site VPN phase 1 won't come up",
+    "expected_category": "vpn_tunnel_down"
+  },
+  {
+    "id": 48,
+    "query": "branch can't reach the data centre after the ISP changed their public IP",
+    "expected_category": "vpn_tunnel_down"
+  },
+  {
+    "id": 49,
+    "query": "our dns server stopped answering queries after the disk filled up",
+    "expected_category": "dns_failure"
+  },
+  {
+    "id": 50,
+    "query": "vpn to chennai branch failing since yesterday, pre shared key was rotated",
+    "expected_category": "vpn_tunnel_down"
+  }
+]

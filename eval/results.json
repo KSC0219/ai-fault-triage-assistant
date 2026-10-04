@@ -1,0 +1,31 @@
+{
+  "embedder": "hashing",
+  "questions": 50,
+  "retrieval": {
+    "hit@1": 0.96,
+    "hit@3": 0.96,
+    "hit@5": 0.98,
+    "mrr": 0.964
+  },
+  "offline_triage": {
+    "accuracy": 0.94,
+    "avg_seconds": 0.004,
+    "failures": [
+      {
+        "query": "after construction work outside, the fiber link to the branch dropped",
+        "expected": "fiber_link_down",
+        "predicted": "vpn_tunnel_down"
+      },
+      {
+        "query": "processor usage is very high and OSPF hellos are being missed",
+        "expected": "high_cpu",
+        "predicted": "memory_leak"
+      },
+      {
+        "query": "our internet peering session keeps going up and down",
+        "expected": "bgp_flap",
+        "predicted": "firewall_session_limit"
+      }
+    ]
+  }
+}
