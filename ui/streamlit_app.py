@@ -32,11 +32,7 @@ EXAMPLES = [
     "Rx light level on the uplink SFP is around -25 dBm",
 ]
 
-ACRONYMS = {"bgp", "stp", "dns", "dhcp", "crc", "vpn", "cpu", "wifi"}
-
-
-def label(category: str) -> str:
-    return " ".join(w.upper() if w in ACRONYMS else w.capitalize() for w in category.split("_"))
+from triage.offline import category_label as label  # noqa: E402
 
 
 example = st.selectbox("Try an example", ["(type your own)"] + EXAMPLES)
@@ -66,7 +62,7 @@ if submitted:
         st.info(result.summary)
     st.subheader("Likely root cause")
     st.write(result.likely_root_cause)
-    st.subheader("Recommended steps")
+    st.subheader("Fixes that resolved similar faults")
     for i, step in enumerate(result.recommended_steps, 1):
         st.write(f"{i}. {step}")
 
@@ -77,7 +73,7 @@ if submitted:
     st.subheader("Similar past faults (evidence)")
     st.dataframe(
         [{"id": f["id"], "similarity": f["similarity"], "title": f["title"],
-          "category": f["category"], "root cause": f["root_cause"], "resolution": f["resolution"],
+          "category": label(f["category"]), "root cause": f["root_cause"], "resolution": f["resolution"],
           "cited": "✓" if f["id"] in result.cited_fault_ids else ""}
          for f in result.similar_faults],
         width="stretch", hide_index=True,

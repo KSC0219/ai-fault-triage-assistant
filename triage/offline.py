@@ -10,9 +10,30 @@ from collections import Counter, defaultdict
 from .knowledge_base import KnowledgeBase
 from .models import TriageResult
 
+ACRONYMS = {"bgp", "stp", "dns", "dhcp", "crc", "vpn", "cpu", "wifi"}
+
+
+def category_label(category: str) -> str:
+    """bgp_flap -> 'BGP Flap'."""
+    return " ".join(w.upper() if w in ACRONYMS else w.capitalize() for w in category.split("_"))
+
+
+def distinct_evidence(hits, limit: int = 5) -> list[dict]:
+    """Keep the best-scoring fault for each distinct (category, root cause, fix) so the evidence isn't repetitive."""
+    seen, out = set(), []
+    for h in hits:
+        key = (h.category, h.root_cause, h.resolution)
+        if key not in seen:
+            seen.add(key)
+            out.append(h.to_dict())
+        if len(out) == limit:
+            break
+    return out
+
 
 def offline_triage(kb: KnowledgeBase, description: str, k: int = 5) -> TriageResult:
     hits = kb.search(description, k=k)
+    evidence_pool = kb.search(description, k=15)
     if not hits:
         raise ValueError("Knowledge base is empty")
 
@@ -41,8 +62,8 @@ def offline_triage(kb: KnowledgeBase, description: str, k: int = 5) -> TriageRes
         likely_root_cause=root_cause,
         recommended_steps=steps[:3],
         confidence=confidence,
-        cited_fault_ids=[h.id for h in same[:3]],
-        similar_faults=[h.to_dict() for h in hits[:5]],
-        summary=(f"Looks like {category.replace('_', ' ')} "
-                 f"({confidence:.0%} of the similar past faults agree)."),
+        cited_fault_ids=[f["id"] for f in distinct_evidence(same, limit=3)],
+        similar_faults=distinct_evidence(evidence_pool),
+        summary=(f"Looks like a {category_label(category)} fault: {confidence:.0%} of the most similar "
+                 f"past faults point to this category."),
     )
