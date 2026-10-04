@@ -1,5 +1,10 @@
 # AI Network Fault Triage Assistant
 
+[![Live demo](https://img.shields.io/badge/Live_demo-Open_app-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://ksc-fault-triage.streamlit.app/)
+![CI](https://github.com/KSC0219/ai-fault-triage-assistant/actions/workflows/main.yml/badge.svg)
+
+> **Try it:** [ksc-fault-triage.streamlit.app](https://ksc-fault-triage.streamlit.app/). Pick an example fault and click **Triage**. The public demo runs in offline (retrieval-only) mode. If it has been idle, click "Yes, get this app back up" and wait about 30 seconds.
+
 An AI assistant for network operations (NOC) teams. An engineer describes a fault in plain English, and the assistant **finds similar past faults with RAG (retrieval-augmented generation)**, **suggests the likely root cause, severity and fix while citing the past tickets it used**, and can **open a ticket through a REST API using LLM tool calling**.
 
 It extends my [Network Fault Management API](https://github.com/KSC0219/network-fault-management) (Spring Boot), which it calls as a tool.
