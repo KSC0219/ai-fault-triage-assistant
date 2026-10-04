@@ -32,7 +32,12 @@ EXAMPLES = [
     "Rx light level on the uplink SFP is around -25 dBm",
 ]
 
-from triage.offline import category_label as label  # noqa: E402
+ACRONYMS = {"bgp", "stp", "dns", "dhcp", "crc", "vpn", "cpu", "wifi"}
+
+
+def label(category: str) -> str:
+    """bgp_flap -> 'BGP Flap'. Defined here so the page has no extra import dependencies."""
+    return " ".join(w.upper() if w in ACRONYMS else w.capitalize() for w in category.split("_"))
 
 
 example = st.selectbox("Try an example", ["(type your own)"] + EXAMPLES)
